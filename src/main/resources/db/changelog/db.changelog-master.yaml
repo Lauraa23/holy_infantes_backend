@@ -1,3 +1,4 @@
 databaseChangeLog:
   - include:
       file: db/changelog/changes/changelog-courseorder-table.yml
+      file: db/changelog/changes/changelog-user-table.yml
