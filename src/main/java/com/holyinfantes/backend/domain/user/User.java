@@ -1,7 +1,10 @@
 package com.holyinfantes.backend.domain.user;
 
+import com.holyinfantes.backend.domain.courseorder.CourseOrder;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "public")
@@ -26,5 +29,8 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CourseOrder> courseOrders;
 
 }

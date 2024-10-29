@@ -1,5 +1,6 @@
 package com.holyinfantes.backend.domain.courseorder;
 
+import com.holyinfantes.backend.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +26,7 @@ public class CourseOrder {
     @Column(name = "pruchased_at", nullable = false)
     private LocalDate purchasedAt;
 
-
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
