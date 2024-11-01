@@ -59,8 +59,8 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: title
-                  type: varchar(250)
+                  name: course_id
+                  type: BIGINT
                   constraints:
                     nullable: false
               - column:
@@ -68,6 +68,11 @@ databaseChangeLog:
                   type: date
                   constraints:
                     nullable: false
+              - column:
+                  name: state
+                  type: varchar(250)
+                  constraints:
+                    nullable: true
               - column:
                   name: user_id
                   type: BIGINT

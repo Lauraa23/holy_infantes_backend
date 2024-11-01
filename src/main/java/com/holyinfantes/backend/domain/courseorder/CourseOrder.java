@@ -20,11 +20,14 @@ public class CourseOrder {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false)
-    private String title;
+    @Column(name = "course_id", nullable = false)
+    private Long courseId;
 
-    @Column(name = "pruchased_at", nullable = false)
+    @Column(name = "purchased_at", nullable = false)
     private LocalDate purchasedAt;
+
+    @Column(name = "state")
+    private String state;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
