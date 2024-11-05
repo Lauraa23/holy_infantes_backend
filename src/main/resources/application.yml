@@ -11,7 +11,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
 logging:
   level:
     org.springframework.web: DEBUG
     org.hibernate.sql: DEBUG
+
+jwt:
+  secret: c1f9c98d33e7386178bb0c84759863b25a9d32c1cfcdd80373401c9dc0099c6f
