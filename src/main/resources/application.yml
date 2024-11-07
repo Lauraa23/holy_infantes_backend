@@ -6,8 +6,9 @@ spring:
     driver-class-name: org.postgresql.Driver
   data:
     mongodb:
-      database: holy_infantes
-      uri: mongodb://root:root@localhost:27017
+      user: root
+      password: root
+      uri: mongodb://root:root@mongo:27017/holy_infantes
   jpa:
     hibernate:
       ddl-auto: none
@@ -19,3 +20,5 @@ logging:
   level:
     org.springframework.web: DEBUG
     org.hibernate.sql: DEBUG
+    org.springframework.data.mongodb: DEBUG
+    org.mongodb.driver: DEBUG
