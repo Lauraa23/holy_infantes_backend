@@ -25,7 +25,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/api/createUser").permitAll()
+                        .requestMatchers("/api/createUser", "/api/createCourse").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
