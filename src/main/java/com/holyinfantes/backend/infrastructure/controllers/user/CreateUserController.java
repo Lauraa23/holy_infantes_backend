@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Validated
-@RequestMapping("/api/createUser")
+@RequestMapping("/api/user")
 public class CreateUserController {
 
     @Autowired
     private CreateUser createUser;
 
 
-    @PostMapping
+    @PostMapping("/createUser")
     public ResponseEntity<String> createUser(@Valid @RequestBody CreateUserDto request) {
         createUser.createUser(request);
         return new ResponseEntity<>("User created successfully", HttpStatus.CREATED);
