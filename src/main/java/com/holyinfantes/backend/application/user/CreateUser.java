@@ -1,6 +1,7 @@
 package com.holyinfantes.backend.application.user;
 
 import com.holyinfantes.backend.domain.user.CreateUserDto;
+import com.holyinfantes.backend.domain.user.Role;
 import com.holyinfantes.backend.domain.user.User;
 import com.holyinfantes.backend.domain.user.exception.UserAlreadyExistException;
 import com.holyinfantes.backend.infrastructure.repository.user.UserRepository;
@@ -27,6 +28,7 @@ public class CreateUser {
         user.setName(request.getName());
         user.setSurname(request.getSurname());
         user.setEmail(request.getEmail());
+        user.setRole(Role.ROLE_USER);
         user.setPassword(encoder.encode(request.getPassword()));
 
         repository.save(user);

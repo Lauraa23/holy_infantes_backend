@@ -7,7 +7,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "users", schema = "public")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -30,7 +30,13 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "last_logout")
+    private Long lastLogout;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CourseOrder> courseOrders;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role;
 }
