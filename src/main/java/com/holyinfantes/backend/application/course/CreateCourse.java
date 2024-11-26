@@ -12,7 +12,7 @@ public class CreateCourse {
     @Autowired
     private CourseRepository courseRepository;
 
-    public void saveCourse(String title, String description, Long price, MultipartFile video) {
+    public void saveCourse(String title, String description, Long price) {
         // 1--integracion con cloudinary para subir el video
         Course course = new Course();
         course.setTitle(title);

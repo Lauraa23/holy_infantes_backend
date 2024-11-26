@@ -18,10 +18,9 @@ public class CreateCourseController {
 
     @PostMapping
     public ResponseEntity<String> createCourse(
-            @ModelAttribute CreateCourseRequest createCourseRequest,
-            @RequestParam("video") MultipartFile video) {
+            @ModelAttribute CreateCourseRequest createCourseRequest) {
 
-        createCourse.saveCourse(createCourseRequest.getTitle(), createCourseRequest.getDescription(), createCourseRequest.getPrice(), video);
+        createCourse.saveCourse(createCourseRequest.getTitle(), createCourseRequest.getDescription(), createCourseRequest.getPrice());
         return new ResponseEntity<>("Course created successfully", HttpStatus.CREATED);
     }
 

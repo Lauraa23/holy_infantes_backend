@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   data:
     mongodb:
-      uri: mongodb://root:root@localhost:27017/holy_infantes
+      uri: mongodb://root:root@localhost:27017/holy_infantes?authSource=admin
   jpa:
     hibernate:
       ddl-auto: none
