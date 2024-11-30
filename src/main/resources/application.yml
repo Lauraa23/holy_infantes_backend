@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:classpath:.env
   datasource:
     url: jdbc:postgresql://localhost:5432/holy_infantes
     username: sa
@@ -18,14 +20,16 @@ spring:
 mongock:
   migration-scan-package: com.holyinfantes.backend.configuration.migrations.mongo
 
+jwt:
+  secret: ${JWT_SECRET}
+
+stripe:
+  api_key: ${STRIPE_API_KEY}
+  api_secret: ${STRIPE_API_SECRET}
+
 logging:
   level:
     org.springframework.web: DEBUG
     org.hibernate.sql: DEBUG
     org.springframework.data.mongodb: DEBUG
     org.mongodb.driver: DEBUG
-
-jwt:
-  secret: c1f9c98d33e7386178bb0c84759863b25a9d32c1cfcdd80373401c9dc0099c6f
-
-
