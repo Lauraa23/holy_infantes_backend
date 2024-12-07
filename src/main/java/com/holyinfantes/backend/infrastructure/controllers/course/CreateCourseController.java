@@ -1,7 +1,6 @@
 package com.holyinfantes.backend.infrastructure.controllers.course;
 
 import com.holyinfantes.backend.application.course.CreateCourse;
-import com.holyinfantes.backend.domain.course.Course;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

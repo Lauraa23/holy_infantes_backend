@@ -29,7 +29,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login", "api/createUser", "/api/createCourse").permitAll()
+                        .requestMatchers("/api/auth/login", "api/createUser", "/api/createCourse", "/api/getAllCourses", "/api/deleteCourse/{id}", "/api/updateCourse/{id}").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
