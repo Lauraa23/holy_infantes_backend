@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Laura
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: products
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: productName
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: NUMERIC(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: stock
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image_url
+                  type: TEXT
+                  constraints:
+                    nullable: true
+        - createIndex:
+            tableName: products
+            indexName: idx_type
+            columns:
+              - column:
+                  name: type
+        - createIndex:
+            tableName: products
+            indexName: idx_price
+            columns:
+              - column:
+                  name: price
