@@ -1,5 +1,28 @@
 version: "3.8"
 services:
+  backend:
+    image: postgres:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: holy_infantes
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: holy_infantes
+      CLOUDINARY_CLOUD_NAME: dqezmmmxt
+      CLOUDINARY_API_KEY: 741484495496572
+      CLOUDINARY_API_SECRET: NkMM_7_AccS8F8mEmx0-TvnoMF4
+    depends_on:
+      - database
+      - mongo
+    networks:
+      - backend-network
+
   database:
     image: postgres:latest
     environment:
@@ -10,6 +33,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend-network
 
   mongo:
     image: mongo:latest
@@ -21,7 +46,13 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - backend-network
 
 volumes:
   postgres_data:
   mongo_data:
+
+networks:
+  backend-network:
+    driver: bridge
