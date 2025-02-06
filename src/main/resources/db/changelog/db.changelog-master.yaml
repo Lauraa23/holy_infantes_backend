@@ -1,3 +1,5 @@
 databaseChangeLog:
-  - includeAll:
-      path: db/changelog/changes
+  - include:
+      file: db/changelog/changes/changelog-user-and-courseorder-table.yml
+  - include:
+      file: db/changelog/changes/changelog-products-and-productorder-table.yml

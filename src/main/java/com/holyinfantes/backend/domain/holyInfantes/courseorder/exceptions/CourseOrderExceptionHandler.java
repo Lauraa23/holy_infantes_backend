@@ -1,4 +1,4 @@
-package com.holyinfantes.backend.domain.courseorder.exceptions;
+package com.holyinfantes.backend.domain.holyInfantes.courseorder.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

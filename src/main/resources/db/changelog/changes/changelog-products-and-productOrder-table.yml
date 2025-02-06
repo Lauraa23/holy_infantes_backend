@@ -1,0 +1,130 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Laura
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: products
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: product_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: price
+                  type: NUMERIC(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: stock
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image_url
+                  type: TEXT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: color
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: size
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: material
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+        - createIndex:
+            tableName: products
+            indexName: idx_type
+            columns:
+              - column:
+                  name: type
+        - createIndex:
+            tableName: products
+            indexName: idx_price
+            columns:
+              - column:
+                  name: price
+
+  - changeSet:
+      id: 4
+      author: Laura
+      preConditions:
+          - onFail: MARK_RAN
+            not:
+              tableExists:
+                tableName: product_order
+      changes:
+        - createTable:
+            tableName: product_order
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_purchase_user
+                    references: users(id)
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_purchase_product
+                    references: products(id)
+              - column:
+                  name: state
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_price
+                  type: NUMERIC(10,2)
+                  constraints:
+                    nullable: false
+
+
+
+
+
+
+
+
+
+
+
