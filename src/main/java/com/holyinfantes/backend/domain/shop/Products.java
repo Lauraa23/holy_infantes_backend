@@ -45,11 +45,4 @@ public class Products {
     @Column(name = "material")
     private String material;
 
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
-
-
 }

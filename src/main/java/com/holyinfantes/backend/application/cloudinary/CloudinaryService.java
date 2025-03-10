@@ -12,7 +12,7 @@ import java.util.Map;
 @Service
 public class CloudinaryService {
 
-    private final Cloudinary cloudinary;
+    private Cloudinary cloudinary;
 
     @Autowired
     public CloudinaryService(Cloudinary cloudinary) {
@@ -22,5 +22,8 @@ public class CloudinaryService {
     public String uploadImage(MultipartFile image) throws IOException {
         Map uploadResult = cloudinary.uploader().upload(image.getBytes(), ObjectUtils.asMap("resource_type", "auto"));
         return (String) uploadResult.get("url");
+
     }
 }
+
+
