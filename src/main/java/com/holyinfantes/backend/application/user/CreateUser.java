@@ -28,8 +28,13 @@ public class CreateUser {
         user.setName(request.getName());
         user.setSurname(request.getSurname());
         user.setEmail(request.getEmail());
-        user.setRole(Role.ROLE_USER);
         user.setPassword(encoder.encode(request.getPassword()));
+
+        try {
+            user.setRole(Role.valueOf(request.getRole().toUpperCase()));
+        } catch (IllegalArgumentException | NullPointerException e) {
+            user.setRole(Role.ROLE_USER);
+        }
 
         repository.save(user);
     }

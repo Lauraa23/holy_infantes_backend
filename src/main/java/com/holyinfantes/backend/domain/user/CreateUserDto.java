@@ -13,4 +13,6 @@ public class CreateUserDto {
     private String email;
     @NotBlank(message = "Password can not be empty")
     private String password;
+
+    private String role;
 }

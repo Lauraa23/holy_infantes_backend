@@ -1,6 +1,7 @@
 package com.holyinfantes.backend.infrastructure.security.jwt;
 
 import com.holyinfantes.backend.configuration.security.JwtConfig;
+import com.holyinfantes.backend.domain.user.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -22,7 +23,7 @@ public class JwtTokenProvider {
     @Autowired
     private JwtConfig jwt;
 
-    public String generateToken(String username, Long userId) {
+    public String generateToken(String username, Long userId, Role role) {
         Date dateToday = new Date();
         long EXPIRATION_TIME = 864_000_000;
         Date expiryDate = new Date(dateToday.getTime() + EXPIRATION_TIME);
@@ -32,6 +33,7 @@ public class JwtTokenProvider {
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
+        claims.put("role", role.name());
         claims.put("logoutAt", null);
 
         return Jwts.builder()
@@ -77,5 +79,14 @@ public class JwtTokenProvider {
                 .parseSignedClaims(token)
                 .getPayload();
         return claims.getIssuedAt().getTime();
+    }
+
+    public String getRoleFromToken(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwt.getSecret())))
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        return claims.get("role", String.class);
     }
 }
