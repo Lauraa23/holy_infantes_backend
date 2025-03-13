@@ -29,8 +29,12 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login", "/api/user/createUser", "/api/createCourse", "/api/getAllCourses", "/api/deleteCourse/{id}", "/api/updateCourse/{id}", "/api/createSection", "/api/getAllSections", "/api/products/createProduct", "/api/products/getAllProducts", "/api/products/getProductById").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/auth/login", "/api/user/createUser", "/api/products/getAllProducts", "/api/products/getProductById").permitAll()
+                        .requestMatchers("/api/products/createProduct", "/api/products/updateProduct/{id}", "/api/products/deleteProduct/{id}").hasRole("ADMIN")
+                        .requestMatchers("/api/createCourse", "/api/updateCourse/{id}", "/api/deleteCourse/{id}").hasRole("ADMIN")
+                        .requestMatchers("/api/createSection", "/api/updateSection/{id}", "/api/deleteSection/{id}").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 )
@@ -51,5 +55,4 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

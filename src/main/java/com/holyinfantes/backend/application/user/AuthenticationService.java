@@ -29,7 +29,7 @@ public class AuthenticationService {
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             if(encoder.matches(password, user.getPassword())) {
-                String token = tokenProvider.generateToken(user.getEmail(), user.getId());
+                String token = tokenProvider.generateToken(user.getEmail(), user.getId(), user.getRole());
                 return new LoginResponse(token, user);
             }
         }
