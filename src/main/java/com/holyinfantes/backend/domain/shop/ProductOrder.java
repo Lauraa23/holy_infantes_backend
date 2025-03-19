@@ -1,5 +1,6 @@
 package com.holyinfantes.backend.domain.shop;
 
+import com.holyinfantes.backend.domain.shop.Products;
 import com.holyinfantes.backend.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
