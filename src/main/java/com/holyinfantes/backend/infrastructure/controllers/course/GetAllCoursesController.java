@@ -2,7 +2,7 @@ package com.holyinfantes.backend.infrastructure.controllers.course;
 
 
 import com.holyinfantes.backend.application.course.GetAllCourses;
-import com.holyinfantes.backend.domain.holyInfantes.course.Course;
+import com.holyinfantes.backend.domain.course.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

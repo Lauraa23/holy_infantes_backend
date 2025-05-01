@@ -1,6 +1,6 @@
 package com.holyinfantes.backend.infrastructure.repository.courseorder;
 
-import com.holyinfantes.backend.domain.holyInfantes.courseorder.CourseOrder;
+import com.holyinfantes.backend.domain.courseorder.CourseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.holyinfantes.backend.domain.holyInfantes.course;
+package com.holyinfantes.backend.domain.course;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

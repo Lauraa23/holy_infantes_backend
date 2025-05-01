@@ -23,12 +23,12 @@ mongock:
 logging:
   level:
     org.springframework.web: DEBUG
-    org.hibernate.sql: DEBUG
-    org.springframework.data.mongodb: DEBUG
-    org.mongodb.driver: DEBUG
 
 jwt:
   secret: c1f9c98d33e7386178bb0c84759863b25a9d32c1cfcdd80373401c9dc0099c6f
+
+stripe_key:
+  secret_key: ${STRIPE_SECRET_KEY}
 
 cloudinary:
   cloud_name: ${CLOUDINARY_CLOUD_NAME}

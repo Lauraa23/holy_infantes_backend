@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/products/createProduct", "/api/products/updateProduct/{id}", "/api/products/deleteProduct/{id}").hasRole("ADMIN")
                         .requestMatchers("/api/createCourse", "/api/updateCourse/{id}", "/api/deleteCourse/{id}").hasRole("ADMIN")
                         .requestMatchers("/api/createSection", "/api/updateSection/{id}", "/api/deleteSection/{id}").hasRole("ADMIN")
+                        .requestMatchers("/api/payment/create").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception -> exception

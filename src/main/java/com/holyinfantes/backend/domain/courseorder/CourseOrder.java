@@ -1,4 +1,4 @@
-package com.holyinfantes.backend.domain.holyInfantes.courseorder;
+package com.holyinfantes.backend.domain.courseorder;
 
 import com.holyinfantes.backend.domain.user.User;
 import jakarta.persistence.*;
